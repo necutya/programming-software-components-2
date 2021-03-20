@@ -6,11 +6,13 @@ import java.lang.reflect.Parameter;
 public class Main {
     public static void main(String[] args) throws Exception {
         // 1.1 Показати використання конструкторів похідного і базового класу.
-        Student student = new Student("Artem Lebedev", 3, 321);
+        Student student = new Student("Artem Lebedev", 3, 321, 75.50f, true);
         GraduateStudent graduateStudent = new GraduateStudent(
                 "Vasilii Pupkin",
                 4,
                 123,
+                60.3f,
+                false,
                 "Diplom Topic"
         );
 
