@@ -1,10 +1,17 @@
+package Model;
+
 @ClassAnn
 public class Student {
+    private static int students_count, budget_students_count;
+    final private static int defaultScholarship = 1300;
+
+
     private String name;
     private int course;
     private int id;
     private float avg_mark;
-    private boolean budget_basis;
+    final private boolean budget_basis;
+
 
     public Student(String name, int course, int id, float avg_mark, boolean budget_basis) {
         this.name = name;
@@ -12,6 +19,12 @@ public class Student {
         this.id = id;
         this.avg_mark = avg_mark;
         this.budget_basis = budget_basis;
+
+        students_count++;
+
+        if (this.budget_basis) {
+            budget_students_count++;
+        }
     }
 
     public String getName() {
@@ -46,6 +59,10 @@ public class Student {
         this.avg_mark = avg_mark;
     }
 
+    public boolean isBudget_basis() {
+        return budget_basis;
+    }
+
     @Override
     @MethodAnn
     public String toString() {
@@ -56,6 +73,14 @@ public class Student {
     }
 
     public boolean has_scholarship() {
+        System.out.println("here");
         return this.avg_mark > 75.5 && this.budget_basis;
+    }
+
+    public float calc_scholarship() {
+        if (!this.has_scholarship()) {
+            throw new RuntimeException("This student don`t have a scholarship!");
+        }
+        return (float) students_count / budget_students_count  * defaultScholarship * this.avg_mark / 100;
     }
 }

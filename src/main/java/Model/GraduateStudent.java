@@ -1,3 +1,5 @@
+package Model;
+
 public class GraduateStudent extends Student implements GraduateInterface {
 
     private String diploma_topic;

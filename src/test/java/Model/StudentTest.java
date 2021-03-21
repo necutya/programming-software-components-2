@@ -1,5 +1,7 @@
+package Model;
+
+import Model.Student;
 import org.junit.*;
-import org.junit.jupiter.api.BeforeEach;
 
 import static junit.framework.TestCase.*;
 
