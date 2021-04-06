@@ -2,45 +2,32 @@ package View;
 
 public class View {
 
-    public void printHelp() {
-        System.out.println("Menu:");
-        System.out.println("1. Create student");
-        System.out.println("2. See user detailed info (only if student has been created)");
-        System.out.println("3. Calculate user scholarship (only if student has been created)");
+    public String getFieldsErrorString() {
+        return "Enter all available fields";
     }
 
-    public void printInputError() {
-        System.out.println("Input only numbers!");
+    public String getStudentCreationSuccessString() {
+        return "User was created successfully!";
     }
 
-    public void printInvalidItemError() {
-        System.out.println("Create user or check your inputs (only numbers are available)!");
+    public String getStudentCreationErrorString() {
+         return "Invalid data!";
     }
 
-    public void printStudentCreationSuccess() {
-        System.out.println("User was created successfully!");
-
+    public String getStudentDoesNotExistErrorString() {
+        return "Firstly, create a student";
     }
 
-    public void printStudentCreationError() {
-        System.out.println("Invalid data!");
-        System.out.println("Try again?(1 - yes, 0 - no)");
+    public String getStudentDoesNotHaveScholarshipString() {
+        return  "This user does not have a scholarship!";
     }
 
-    public void printStudentDoesNotHaveScholarship() {
-        System.out.println("This user does not have a scholarship!");
+    public String getStudentInfoString(int id, String name, int course, float avg_mark, boolean budget) {
+        return "Model.Student Info:" + "\n\tID: " + id + "\n\tName: " + name + "\n\tCourse: " + course +
+                "\n\tName: " + avg_mark + "\n\tBudget basis: " + (budget ? '+' : '-');
     }
 
-    public void printStudentInfo(int id, String name, int course, float avg_mark, boolean budget) {
-        System.out.println("Model.Student Info:");
-        System.out.println("\tID: " + id);
-        System.out.println("\tName: " + name);
-        System.out.println("\tCourse: " + course);
-        System.out.println("\tName: " + avg_mark);
-        System.out.println("\tBudget basis: " + (budget ? '+' : '-'));
-    }
-
-    public void printStudentScholarship(float scholarship) {
-        System.out.println("Student scholarship is: " + scholarship + " $.");
+    public String getStudentScholarshipString(float scholarship) {
+        return "Student scholarship is: " + scholarship + " $.";
     }
 }

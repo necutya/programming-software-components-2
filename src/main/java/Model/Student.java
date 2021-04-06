@@ -10,7 +10,7 @@ public class Student {
     private int course;
     private int id;
     private float avg_mark;
-    final private boolean budget_basis;
+    private boolean budget_basis;
 
 
     public Student(String name, int course, int id, float avg_mark, boolean budget_basis) {
@@ -63,6 +63,14 @@ public class Student {
         return budget_basis;
     }
 
+    public void setBudget_basis(boolean budget_basis) {
+        this.budget_basis = budget_basis;
+        if (budget_basis) {
+            budget_students_count++;
+        }
+    }
+
+
     @Override
     @MethodAnn
     public String toString() {
@@ -73,7 +81,6 @@ public class Student {
     }
 
     public boolean has_scholarship() {
-        System.out.println("here");
         return this.avg_mark > 75.5 && this.budget_basis;
     }
 
