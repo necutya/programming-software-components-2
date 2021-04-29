@@ -3,11 +3,15 @@ package Controller;
 import Model.StudentDecorator;
 import UI.UI;
 import View.View;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.*;
 
+@Component("controller")
+@Scope("prototype")
 public class StudentController implements StudentControllerInterface {
     private static StudentController instance;
 
@@ -15,19 +19,11 @@ public class StudentController implements StudentControllerInterface {
     private View view;
     private StudentDecorator model = new StudentDecorator("", 0, 0, 0, false);
 
-
-
-    private StudentController(View v, BufferedReader reader) {
+    @Autowired
+    public StudentController(View v) {
         this.view = v;
     }
 
-    // Singleton
-    public static StudentController getInstance(View v, BufferedReader reader) {
-        if (instance == null) {
-            instance = new StudentController(v, reader);
-        }
-        return instance;
-    }
 
     public void createUI() {
         ui = new UI("Student App");

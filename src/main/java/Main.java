@@ -1,16 +1,18 @@
-import Controller.StudentController;
 import Controller.StudentControllerProxy;
-import View.View;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        View view = new View();
-        BufferedReader reader = new BufferedReader(new InputStreamReader( System.in, "UTF-8"));
-        StudentControllerProxy proxyLogger = new StudentControllerProxy(StudentController.getInstance(view, reader));
+        // Read xml configuration file
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationConfiguration.xml");
+
+        // Useless
+        // View view = context.getBean("view", View.class);
+        // StudentController studentController = context.getBean("controller", StudentController.class);
+
+        // Get proxy bean and use it
+        StudentControllerProxy proxyLogger = context.getBean("proxyController", StudentControllerProxy.class);
         proxyLogger.createUI();
         proxyLogger.show();
     }
